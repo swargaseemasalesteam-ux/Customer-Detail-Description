@@ -182,7 +182,6 @@
           <option value="Venu">Venu</option>
           <option value="Praveen">Praveen</option>
           <option value="Mahesh">Mahesh</option>
-          <option value="Naveen">Naveen</option>
           <option value="Narsi Reddy">Narsi Reddy</option>
           <option value="Others">Others</option>
         </select>
@@ -285,7 +284,72 @@
         <label for="noOfPeople">No. of People</label>
         <input type="number" id="noOfPeople" placeholder="How many people visited?" min="1" />
       </div>
-      <div class="form-group"></div>
+      <div class="form-group">
+        <label for="channel">Channel <span class="req">*</span></label>
+        <select id="channel" required>
+          <option value="" disabled selected>— Select Channel —</option>
+          <option value="Lead Space">Lead Space</option>
+          <option value="Bhakti">Bhakti</option>
+          <option value="ABN">ABN</option>
+          <option value="TV5">TV5</option>
+          <option value="Sakshi">Sakshi</option>
+          <option value="ETV AP/TS">ETV AP/TS</option>
+          <option value="Metro">Metro</option>
+          <option value="FM">FM</option>
+          <option value="10TV">10TV</option>
+          <option value="VNR Digital">VNR Digital</option>
+          <option value="Hindu Darma">Hindu Darma</option>
+          <option value="Auto Ads">Auto Ads</option>
+          <option value="YouTube 1">YouTube 1</option>
+          <option value="YouTube 2">YouTube 2</option>
+          <option value="Facebook">Facebook</option>
+          <option value="ABN Digital">ABN Digital</option>
+          <option value="Bakthi Doc">Bakthi Doc</option>
+          <option value="ABN Doc">ABN Doc</option>
+          <option value="TV5 Doc">TV5 Doc</option>
+          <option value="ETV AP/TS Doc">ETV AP/TS Doc</option>
+          <option value="Sakshi Doc">Sakshi Doc</option>
+          <option value="V6 Doc">V6 Doc</option>
+          <option value="Enadu Magazine">Enadu Magazine</option>
+          <option value="AJ Magazine">AJ Magazine</option>
+          <option value="Enadu PA">Enadu PA</option>
+          <option value="AJ PA">AJ PA</option>
+          <option value="Sakshi PA">Sakshi PA</option>
+          <option value="Economic Times PA">Economic Times PA</option>
+          <option value="Hindu PA">Hindu PA</option>
+          <option value="Other PA">Other PA</option>
+          <option value="Hoardings">Hoardings</option>
+          <option value="Vijayawada Hor">Vijayawada Hor</option>
+          <option value="Gated Community">Gated Community</option>
+          <option value="Restaurant">Restaurant</option>
+          <option value="ETV Life">ETV Life</option>
+          <option value="ETV Win">ETV Win</option>
+          <option value="HMTV">HMTV</option>
+          <option value="Maha News">Maha News</option>
+          <option value="CVR News">CVR News</option>
+          <option value="Prime 9">Prime 9</option>
+          <option value="Bhanu digital">Bhanu digital</option>
+          <option value="V6">V6</option>
+          <option value="Website">Website</option>
+          <option value="BK Channel">BK Channel</option>
+          <option value="NTV">NTV</option>
+          <option value="RCS Msg">RCS Msg</option>
+          <option value="Web enquiry">Web enquiry</option>
+          <option value="Bulk data">Bulk data</option>
+          <option value="Credai">Credai</option>
+          <option value="Reference">Reference</option>
+          <option value="Outgoing">Outgoing</option>
+          <option value="EX-Owner">EX-Owner</option>
+          <option value="DSV">DSV</option>
+          <option value="Sai Anurag Colony">Sai Anurag Colony</option>
+          <option value="ETV Ent">ETV Ent</option>
+          <option value="Weekend Home">Weekend Home</option>
+          <option value="Others">Others</option>
+        </select>
+        <div class="other-wrapper" id="channelOtherWrapper">
+          <input type="text" id="channelOtherText" placeholder="Enter channel name…" />
+        </div>
+      </div>
     </div>
   </div>
 
@@ -347,6 +411,7 @@
   }
 
   bindOthers('executiveName', 'executiveOtherWrapper', 'executiveOtherText');
+  bindOthers('channel', 'channelOtherWrapper', 'channelOtherText');
   bindOthers('occupation',    'occupationOtherWrapper', 'occupationOtherText');
   bindOthers('vehicle',       'vehicleOtherWrapper',    'vehicleOtherText');
 
@@ -389,6 +454,7 @@
       location:      document.getElementById('location').value.trim(),
       nativePlace:   document.getElementById('nativePlace').value.trim(),
       noOfPeople:    document.getElementById('noOfPeople').value.trim(),
+      channel:       getVal('channel', 'channelOtherText'),
       remarks:       document.getElementById('remarks').value.trim(),
       timestamp:     new Date().toISOString()
     };
@@ -409,9 +475,9 @@
   }
 
   function clearForm() {
-    ['executiveName','venture','occupation','vehicle'].forEach(id => document.getElementById(id).value = '');
-    ['executiveOtherWrapper','occupationOtherWrapper','vehicleOtherWrapper'].forEach(id => document.getElementById(id).style.display = 'none');
-    ['executiveOtherText','occupationOtherText','vehicleOtherText'].forEach(id => document.getElementById(id).value = '');
+    ['executiveName','venture','occupation','vehicle','channel'].forEach(id => document.getElementById(id).value = '');
+    ['executiveOtherWrapper','occupationOtherWrapper','vehicleOtherWrapper','channelOtherWrapper'].forEach(id => document.getElementById(id).style.display = 'none');
+    ['executiveOtherText','occupationOtherText','vehicleOtherText','channelOtherText'].forEach(id => document.getElementById(id).value = '');
     const _now = new Date();
   const _yyyy = _now.getFullYear(), _mm = String(_now.getMonth()+1).padStart(2,'0'), _dd2 = String(_now.getDate()).padStart(2,'0');
   document.getElementById('entryDate').value = `${_yyyy}-${_mm}-${_dd2}`;
